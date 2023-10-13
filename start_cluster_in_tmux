@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# tmux new -d -s "redis-cluster"
+
+tmux new-session -d -s redis-cluster 'bash start_redis.sh 7000; read'
+tmux split-window -h 'bash start_redis.sh 7001; read'
+tmux split-window -h 'bash start_redis.sh 7002; read'
+tmux split-window -v -t 1 'bash start_redis.sh 7003; read'
+tmux split-window -v -t 2 'bash start_redis.sh 7004; read'
+tmux split-window -v -t 3 'bash start_redis.sh 7005; read'
+tmux select-layout even-vertical
